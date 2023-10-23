@@ -1,0 +1,58 @@
+
+---
+ar_internal_metadata:
+  columns:
+  - key
+  - value
+  - created_at
+  - updated_at
+  records: 
+  - - environment
+    - development
+    - '2023-10-19 11:39:29.630807'
+    - '2023-10-19 11:39:29.630807'
+
+---
+users:
+  columns:
+  - id
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - created_at
+  - updated_at
+  - name
+  - role
+  records: 
+  - - 1
+    - likharavanika128@gmail.com
+    - "$2a$12$Fb.9cRfQ.NhZ49X4xliU2uSAWvLWI5LCU5vH8sf2Cyn4IRLhM37aK"
+    - 
+    - 
+    - 
+    - '2023-10-23 06:47:31.954339'
+    - '2023-10-23 07:16:44.301043'
+    - 
+    - 
+  - - 2
+    - abc@gmail.com
+    - "$2a$12$0Y/F/sCHzY0M3gKkCCMZAOKWiA7RLCo7lyoTvR2BaNV.KNhseB4P2"
+    - 
+    - 
+    - 
+    - '2023-10-23 06:57:19.408485'
+    - '2023-10-23 06:57:19.408485'
+    - ''
+    - 
+  - - 3
+    - var@gmail.com
+    - "$2a$12$b6ChMbWiGayhVaMCfTdZY.0C1gU.4.CkWhIObak.L4GZSz.RkCrIC"
+    - 
+    - 
+    - 
+    - '2023-10-23 07:03:51.386523'
+    - '2023-10-23 07:03:51.386523'
+    - varun
+    - 
