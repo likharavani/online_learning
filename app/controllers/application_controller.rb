@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+  layout "welcome"
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
   def after_sign_in_path_for(resource)
     #  home_index_path
-    students_url
+   users_url
   end
 
 end

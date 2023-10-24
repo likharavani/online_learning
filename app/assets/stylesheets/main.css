@@ -1,7 +1,10 @@
 .content1{
   height:70vh;
   width: 100%;
-  background-color: lightblue; 
+  text-align: center;
+  border:2px solid red;
+  display: block;
   background-image: url("/project/app/assets/images/background.jpg") ;
+  background-size: cover;
   
 }

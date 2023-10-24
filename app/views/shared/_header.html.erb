@@ -10,6 +10,18 @@
           <a class="nav-link active" aria-current="page" href="/home">Home</a>
         </li>
         <%if user_signed_in? %>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Settings
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/users/edit">Edit profile</a></li>
+            <li><a class="dropdown-item" href="/users/password/new">Forget password</a></li>
+            <li> <%= link_to 'forgot', user_password_path, class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
             <li class="nav-item">
               <a class="nav-link">  <%= current_user.email%></a>   
             </li>

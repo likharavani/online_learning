@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :courses
   after_create  :after_create_mail
 
   devise :database_authenticatable, :registerable,

@@ -1,12 +1,23 @@
-
-<%# <style>
-  .content{
-    background-color:red;
-  }
-</style> %>
-<div class="content1">
-  <div class="mx-auto  d-flex flex-column align-items-center justify-content-center">
+<div class="container">
+  <div
+    class="my-5 d-flex flex-column align-items-center justify-content-center">
     <h1>Learn programming skills with us</h1>
-    <button>view more</button>
+    <button class="btn btn-primary">view more</button>
+   
+  </div>
+  <div class="container  d-flex flex-wrap p-3 justify-content-center align-items-center">
+    <%@courses.each do |course|%>
+    <div class="card m-3 shadow" style="width: 18rem">
+      <img src="/assets/background.jpg" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title "><%=course.name%></h5>
+        <div class="card-text d-flex justify-content-between">
+         <p> <%=course.description%></p>
+         <p>Price:<%=course.price%></p>
+        </div>
+        <%= link_to "Buy now","buy",methods: :get, class: "btn btn-primary" %>
+      </div>
+    </div>
+    <%end%>
   </div>
 </div>
