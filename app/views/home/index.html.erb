@@ -6,7 +6,7 @@
    
   </div>
   <div class="container  d-flex flex-wrap p-3 justify-content-center align-items-center">
-    <%@courses.each do |course|%>
+    <% @courses.each do |course|%>
     <div class="card m-3 shadow" style="width: 18rem">
       <img src="/assets/background.jpg" class="card-img-top" alt="..." />
       <div class="card-body">
@@ -15,7 +15,7 @@
          <p> <%=course.description%></p>
          <p>Price:<%=course.price%></p>
         </div>
-        <%= link_to "Buy now","buy",methods: :get, class: "btn btn-primary" %>
+        <%= link_to "View Details",course,methods: :get, class: "btn btn-primary" %>
       </div>
     </div>
     <%end%>

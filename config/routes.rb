@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   resources  :home
   resources :users,:courses
 
-  get "buy" ,to: "home#buy"
+
+  get "form" ,to: "users#form"
+  get "/add" ,to: "courses#create"
 end
