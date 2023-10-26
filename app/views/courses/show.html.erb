@@ -1,3 +1,12 @@
-<h1><%=@course.name%></h1>
-<%=notice%>
-<%= link_to "buy" ,"/add?course_id=#{@course.id}"%>
+<%= render "/shared/alert"%>
+
+<div class="container p-4">
+  <h1><%=@course.name%></h1>
+  <p>Learn to code in Java — a robust programming language used to create software, web and mobile apps, and more.</p>
+  <h4>About this cousrse</h4>
+  <p>Popular for its versatility and ability to create a wide variety of applications, learning Java opens up your possibilities when coding. With it, you’ll be able to develop large systems, software, and mobile applications — and even create mobile apps for Android. Learn important Java coding fundamentals and practice your new skills with real-world projects.</p>
+  <h4>Price : <%= @course.price %></h4>
+  
+  <h4>Syllabus</h4>
+  <%= link_to "Buy now" ,"/add?course_id=#{@course.id}",class: "btn btn-primary my-1"%>  
+</div>

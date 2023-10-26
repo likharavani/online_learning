@@ -16,15 +16,22 @@ class CoursesController < ApplicationController
   def create
     @user = current_user
     @course=Course.find(params[:course_id])
-    puts "###################4444 #{@course.id}"
-    if @user.courses.find_by(name:@course.name)==nil
-       puts "true.................."
-       @user.courses.create(name:@course.name,description:@course.description,price:@course.price)
-       redirect_to "/users"
+    if @user
+        @course=Course.find(params[:course_id])
+        puts "###################4444 #{@course.id}"
+        if @user.courses.find_by(name:@course.name)==nil
+          puts "true.................."
+          @user.courses.create(name:@course.name,description:@course.description,price:@course.price)
+          flash[:notice]="You successfully enroll this course !!"
+          redirect_to "/users"
+        else
+          puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+          flash.now[:alert]="You already enroll this course !!"
+          render "/courses/show"
+        end
     else
-      puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-      flash.now[:notice] = "You already enroll this course."
-      redirect_to "/users/form"
+      flash.now[:alert]="Please sign in first !!"
+      render "/courses/show"
     end
 
   end
