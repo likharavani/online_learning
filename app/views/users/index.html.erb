@@ -18,6 +18,7 @@
   <h5>Your courses are : </h5>
   <% current_user.courses.each do |course| %>
   <p><%=course.name%></p>
+   <%# <%= link_to "go" ,"courses/#{course.id}",class: "btn btn-primary my-1"  %>
   <%end%>
 </div>
 

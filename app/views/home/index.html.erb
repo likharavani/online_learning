@@ -8,7 +8,7 @@
   <div class="container  d-flex flex-wrap p-3 justify-content-center align-items-center">
     <% @courses.each do |course|%>
     <div class="card m-3 shadow" style="width: 18rem">
-      <img src="/assets/background.jpg" class="card-img-top" alt="..." />
+      <img src="<%=course.image%>" class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title "><%=course.name%></h5>
         <div class="card-text d-flex justify-content-between">

@@ -6,7 +6,17 @@
   <h4>About this cousrse</h4>
   <p>Popular for its versatility and ability to create a wide variety of applications, learning Java opens up your possibilities when coding. With it, you’ll be able to develop large systems, software, and mobile applications — and even create mobile apps for Android. Learn important Java coding fundamentals and practice your new skills with real-world projects.</p>
   <h4>Price : <%= @course.price %></h4>
-  
-  <h4>Syllabus</h4>
+  <%= @course.pdfs.first.name%>
+  <h4>Syllabus</h4> 
+ <%if user_signed_in?  && current_user.courses.find_by(name:@course.name)%>
+    <p><%@list=@course.pdfs.first.path.split(",")%></p>
+    <% @list.each_with_index do |li,index|%>
+        <a href= <%= li %> target="_blank" style="text-decoration:none"><i class="fa fa-camera"></i> <%=@course.pdfs.first.name%> <%=index+1%></a> <br>
+    <%end%>
+  <%else%>
+     <p> you are not authorized to access this course</p>
+  <%end %>
+
+ 
   <%= link_to "Buy now" ,"/add?course_id=#{@course.id}",class: "btn btn-primary my-1"%>  
 </div>

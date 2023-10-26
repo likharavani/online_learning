@@ -13,4 +13,5 @@ Rails.application.routes.draw do
 
   get "form" ,to: "users#form"
   get "/add" ,to: "courses#create"
+
 end

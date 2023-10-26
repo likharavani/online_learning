@@ -18,14 +18,11 @@ class CoursesController < ApplicationController
     @course=Course.find(params[:course_id])
     if @user
         @course=Course.find(params[:course_id])
-        puts "###################4444 #{@course.id}"
         if @user.courses.find_by(name:@course.name)==nil
-          puts "true.................."
-          @user.courses.create(name:@course.name,description:@course.description,price:@course.price)
+          @user.courses<<@course
           flash[:notice]="You successfully enroll this course !!"
           redirect_to "/users"
         else
-          puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
           flash.now[:alert]="You already enroll this course !!"
           render "/courses/show"
         end
