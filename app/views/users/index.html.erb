@@ -17,8 +17,8 @@
   <p>Welcome <%=current_user.name%></p>
   <h5>Your courses are : </h5>
   <% current_user.courses.each do |course| %>
-  <p><%=course.name%></p>
-   <%# <%= link_to "go" ,"courses/#{course.id}",class: "btn btn-primary my-1"  %>
+      <p><%=course.name%>
+      <a href="courses/<%= course.id %>" style="text-decoration:none" class="mx-2">View Course</a><br>
   <%end%>
 </div>
 
