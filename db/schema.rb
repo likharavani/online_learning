@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_26_091745) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_27_072303) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_091745) do
   create_table "courses_users", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "course_id", null: false
+    t.float "progress", default: 0.0
+    t.integer "pdf_watched", default: 0
   end
 
   create_table "pdfs", force: :cascade do |t|
@@ -35,6 +37,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_091745) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_pdfs_on_course_id"
+  end
+
+  create_table "progresses", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "course_id", null: false
+    t.integer "pdf_watched", default: 0
+    t.float "percentage_completion", default: 0.0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_progresses_on_course_id"
+    t.index ["user_id"], name: "index_progresses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,4 +65,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_091745) do
   end
 
   add_foreign_key "pdfs", "courses"
+  add_foreign_key "progresses", "courses"
+  add_foreign_key "progresses", "users"
 end

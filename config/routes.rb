@@ -13,5 +13,6 @@ Rails.application.routes.draw do
 
   get "form" ,to: "users#form"
   get "/add" ,to: "courses#create"
+  get "pdf", to: "courses#count"
 
 end

@@ -20,6 +20,7 @@ class CoursesController < ApplicationController
         @course=Course.find(params[:course_id])
         if @user.courses.find_by(name:@course.name)==nil
           @user.courses<<@course
+          Progress.create(course_id:@course.id,user_id:@user.id)
           flash[:notice]="You successfully enroll this course !!"
           redirect_to "/users"
         else
@@ -31,6 +32,9 @@ class CoursesController < ApplicationController
       render "/courses/show"
     end
 
+    def count
+      puts "vjhsdbkjsdnfk///////////"
+   end
   end
 
 
