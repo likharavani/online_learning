@@ -1,23 +1,33 @@
 <div class="container">
-  <div
-    class="my-5 d-flex flex-column align-items-center justify-content-center">
+  <div class="my-5 d-flex flex-column align-items-center justify-content-center">
     <h1>Learn programming skills with us</h1>
     <button class="btn btn-primary">view more</button>
-   
+
   </div>
   <div class="container  d-flex flex-wrap p-3 justify-content-center align-items-center">
     <% @courses.each do |course|%>
-    <div class="card m-3 shadow" style="width: 18rem">
-      <img src="<%=course.image%>" class="card-img-top" alt="..." />
-      <div class="card-body">
-        <h5 class="card-title "><%=course.name%></h5>
-        <div class="card-text d-flex justify-content-between">
-         <p> <%=course.description%></p>
-         <p>Price:<%=course.price%></p>
+      <div class="card m-3 shadow" style="width: 18rem">
+        <img src="<%=course.image%>" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title ">
+            <%=course.name%>
+          </h5>
+          <div class="card-text d-flex justify-content-between">
+            <p>
+              <%=course.description%>
+            </p>
+            <p>Price:<%=course.price%>
+            </p>
+          </div>
+          <%= link_to "View Details" ,course,methods: :get, class: "btn btn-primary" %>
         </div>
-        <%= link_to "View Details",course,methods: :get, class: "btn btn-primary" %>
       </div>
-    </div>
-    <%end%>
+      <%end%>
   </div>
-</div>
+
+    <h3>Feedback</h3>
+    <% @feedbacks.each do |feedback| %>
+      
+          <%=feedback.description%>
+       
+    <%end%>

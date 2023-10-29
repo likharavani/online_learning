@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'feedbacks/index'
+  get 'feedbacks/create'
+  get 'feedbacks/destroy'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   devise_scope :user do
@@ -13,6 +16,12 @@ Rails.application.routes.draw do
 
   get "form" ,to: "users#form"
   get "/add" ,to: "courses#create"
-  get "pdf", to: "courses#count"
 
+  get "/addition",to: "courses#addition"
+
+  resources :courses do
+    resources :feedbacks, only: [:create]
+  end
+  
+  
 end

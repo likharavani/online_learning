@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
 
   def index
     @courses=Course.all
+    @progress=Progress.all
   end
   def show
     puts "hi"
@@ -12,6 +13,24 @@ class CoursesController < ApplicationController
   def new
     @course = Course.new
   end
+  
+  def addition
+    @progress = Progress.find_by(id: params[:id])
+
+    if @progress
+      @progress.pdf_watched += 1
+      if @progress.save
+        flash[:success] = "PDF watched count updated."
+      else
+        flash[:error] = "Failed to update PDF watched count."
+      end
+    else
+      flash[:error] = "Progress record not found."
+    end
+  
+    
+ end
+
 
   def create
     @user = current_user
@@ -32,9 +51,6 @@ class CoursesController < ApplicationController
       render "/courses/show"
     end
 
-    def count
-      puts "vjhsdbkjsdnfk///////////"
-   end
   end
 
 

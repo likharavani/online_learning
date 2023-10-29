@@ -9,49 +9,49 @@
     name:"DSA using Python",
     price:5600,
     description:"5 lessons",
-    image: '/assets/course_images/java.jpeg'
+    image: '/assets/course_images/background.jpg'
   },
   {
     name:"C language",
     price:5600,
     description:"5 lessons",
-    image: '/assets/course_images/java.jpeg'
+    image: '/assets/course_images/background.jpg'
   },
   {
     name:"Web Development",
     price:5600,
     description:"5 lessons",
-    image: '/assets/course_images/java.jpeg'
+    image: '/assets/course_images/background.jpg'
   },
   {
     name:"C++ Language",
     price:5600,
     description:"5 lessons",
-    image: '/assets/course_images/java.jpeg'
+    image: '/assets/course_images/background.jpg'
   },
   {
     name:"Python for begineers",
     price:5600,
     description:"5 lessons",
-    image: '/assets/course_images/java.jpeg'
+    image: '/assets/course_images/background.jpg'
   },
   {
     name:"Java Advanced",
     price:5600,
     description:"5 lessons",
-    image: '/assets/course_images/java.jpeg'
+    image: '/assets/course_images/background.jpg'
   },
   {
     name:"STL in C++",
     price:5600,
     description:"5 lessons",
-    image: '/assets/course_images/java.jpeg'
+    image: '/assets/course_images/background.jpg'
   },
   {
     name:"C,C++ and DSA",
     price:5600,
     description:"5 lessons",
-    image: '/assets/course_images/java.jpeg'
+    image: '/assets/course_images/background.jpg'
   },
 ]
 @data.each do |data_item|
@@ -94,11 +94,6 @@
   path: "/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf"
 },]
 @course_ids=Course.pluck(:id)
-# @pdf_data.each do |data_item|
-#   Course.all.each do |course|
-#     course.pdfs.create(data_item)
-#   end
-# end
 
 @pdf_data.each_with_index do |data_item,index|
   course=Course.find_by(id:@course_ids[index])

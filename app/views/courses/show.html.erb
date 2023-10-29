@@ -1,51 +1,79 @@
-<%= render "/shared/alert"%>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>
-  function myFunction(){
-		console.log(<%= Progress.find_by(course_id:@course.id,user_id:current_user.id).pdf_watched+=1 %> )
-		$.ajax({
-			url: '/courses?id=2/count',
-			type: 'GET',
-			dataType: 'json',
-			cache: false,
-		
-			success: function (color) {
-					return color;
-			},
-			error: function () {
-					alert('Error occured');
-			}
-		});
-	console.log("you clicked me")
+<%= render "shared/alert" %> <!-- Assuming the alert partial file is located at "app/views/shared/_alert.html.erb" -->
 
-  console.log(<%= Progress.find_by(course_id:@course.id,user_id:current_user.id).pdf_watched %> ) 
-	}
-  
-</script>
-<div class="container p-4">
-  <h1><%=@course.name%></h1>
-  <p>Learn to code in Java — a robust programming language used to create software, web and mobile apps, and more.</p>
-  <h4>About this cousrse</h4>
-  <p>Popular for its versatility and ability to create a wide variety of applications, learning Java opens up your possibilities when coding. With it, you’ll be able to develop large systems, software, and mobile applications — and even create mobile apps for Android. Learn important Java coding fundamentals and practice your new skills with real-world projects.</p>
-  <h4>Price : <%= @course.price %></h4>
-  <%= @course.pdfs.first.name%>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-  <h4>Syllabus</h4> 
- <%if user_signed_in?  && current_user.courses.find_by(name:@course.name)%>
-    <p><%@list=@course.pdfs.first.path.split(",")%></p>
-    <% @list.each_with_index do |li,index|%>
-        <a href= <%= li %> target="_blank" style="text-decoration:none"
-           onclick="myFunction()"> <%=@course.pdfs.first.name%> <%=index+1%></a><br>
-    <%end%>
+  <script>
+    function myFunction(id) {
 
-    <h4>Your progress:</h4>
-    <p>Pdf watched: <%=@course.progress.first.pdf_watched%></p>
-     <p>Course completion percentage out of 100 : <%=Progress.find_by(course_id:@course.id,user_id:current_user.id).percentage_completion%></p>
-  <%else%>
-     <p> you are not authorized to access this course</p>
-     <%= link_to "Buy now" ,"/add?course_id=#{@course.id}",class: "btn btn-primary my-1"%>  
-  <%end %>
+      $.ajax({
+        type: 'GET',
+        url: "/addition?id=" + id,
+        success: function () {
+          alert('you watched the pdf');
+          document.getElementById("color_change").style.color = "green";
+          document.getElementById("color_change").style.display = "block";
+        },
+        error: function () {
+          alert('An error occurred');
+        }
+      });
+      console.log("you clicked me");
+    }
+  </script>
 
- 
-  
-</div>
+  <div class="container p-4">
+    <%= notice %>
+      <h1>
+        <%= @course.name %>
+      </h1>
+      <p>Learn to code in Java — a robust programming language used to create software, web and mobile apps, and more.
+      </p>
+      <h4>About this course</h4>
+      <p>Popular for its versatility and ability to create a wide variety of applications, learning Java opens up your
+        possibilities when coding. With it, you’ll be able to develop large systems, software, and mobile applications —
+        and even create mobile apps for Android. Learn important Java coding fundamentals and practice your new skills
+        with real-world projects.</p>
+      <h4>Price: <%= @course.price %>
+      </h4>
+      <%= @course.pdfs.first.name %>
+
+        <h4>Syllabus</h4>
+        <% if user_signed_in? && current_user.courses.find_by(name: @course.name) %>
+          <p>
+            <% @list=@course.pdfs.first.path.split(",") %>
+          </p>
+          <% @list.each_with_index do |li, index| %>
+            <a href="<%= li %>" target="_blank" style="text-decoration:none"
+              onclick="myFunction(<%= Progress.find_by(course_id: @course.id, user_id: current_user.id).id %>)">
+              <i class="fa-solid fa-circle-check" id="color_change" style="display:none"></i>
+              <%= @course.pdfs.first.name %>
+                <%= index + 1 %>
+            </a><br>
+            <% end %>
+
+              <h4>Your progress:</h4>
+              <p>Pdf watched: <%= @course.progress.first.pdf_watched %>
+              </p>
+              <p>Course completion percentage out of 100: <%= Progress.find_by(course_id: @course.id, user_id:
+                  current_user.id).percentage_completion %>
+              </p>
+              <% if Feedback.find_by(course_id:@course.id,user_id:current_user.id) %>
+                <p>You already gave feedback to this course.</p>
+                <%else%>
+                  <h4>Add feedback :</h4>
+                  <%= form_with(model: [@course, Feedback.new]) do |form| %>
+                    <%= form.text_area :description, placeholder: "Enter your feedback here" %>
+                    <br>
+                      <%= form.submit "Submit Feedback" , class: "btn btn-primary" %>
+                        <% end %>
+                          <%end%>
+
+
+                            <% else %>
+                              <p>You are not authorized to access this course</p>
+                              <%= link_to "Buy now" , "/add?course_id=#{@course.id}" , class: "btn btn-primary my-1" %>
+                                <% end %>
+
+
+
+  </div>

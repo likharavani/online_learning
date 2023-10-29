@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_27_072303) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_28_163734) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,8 +26,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_072303) do
   create_table "courses_users", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "course_id", null: false
-    t.float "progress", default: 0.0
-    t.integer "pdf_watched", default: 0
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "description"
+    t.index ["course_id", "user_id"], name: "index_feedbacks_on_course_id_and_user_id", unique: true
+    t.index ["course_id"], name: "index_feedbacks_on_course_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
   create_table "pdfs", force: :cascade do |t|
@@ -64,6 +73,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_072303) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "feedbacks", "courses"
+  add_foreign_key "feedbacks", "users"
   add_foreign_key "pdfs", "courses"
   add_foreign_key "progresses", "courses"
   add_foreign_key "progresses", "users"
