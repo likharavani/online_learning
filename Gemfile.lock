@@ -104,8 +104,6 @@ GEM
     erubi (1.12.0)
     execjs (2.9.1)
     ffi (1.16.3)
-    font-awesome-rails (4.7.0.8)
-      railties (>= 3.2, < 8.0)
     font-awesome-sass (6.4.2)
       sassc (~> 2.0)
     globalid (1.2.1)
@@ -157,8 +155,13 @@ GEM
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    owlcarousel-rails (2.2.3.5)
+    pdf-core (0.9.0)
     pg (1.5.4)
     popper_js (1.16.1)
+    prawn (2.4.0)
+      pdf-core (~> 0.9.0)
+      ttfunk (~> 1.7)
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.3)
@@ -234,6 +237,7 @@ GEM
     thor (1.3.0)
     tilt (2.3.0)
     timeout (0.4.0)
+    ttfunk (1.7.0)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -268,13 +272,14 @@ DEPENDENCIES
   capybara
   debug
   devise
-  font-awesome-rails
   font-awesome-sass
   importmap-rails
   jbuilder
   jquery-rails
   letter_opener
+  owlcarousel-rails
   pg
+  prawn
   puma (~> 5.0)
   rails (~> 7.0.8)
   redis (~> 4.0)

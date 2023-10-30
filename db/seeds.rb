@@ -59,39 +59,57 @@
 @pdf_data=[
   {
   name: "Java tutorial",
-  path: "/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf"
+  path:  "/assets/course_pdfs/java_tutorial.pdf,
+  /assets/course_pdfs/java_tutorial_2.pdf,
+  /assets/course_pdfs/dummy-pdf_3.pdf"
 },
 {
   name: "DSA using python tutorial",
-  path: "/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf"
+  path: "/assets/course_pdfs/java_tutorial.pdf,
+  /assets/course_pdfs/java_tutorial_2.pdf,
+  /assets/course_pdfs/dummy-pdf_3.pdf"
 },
 {
   name: "C language tutorial",
-  path: "/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf"
+  path: "/assets/course_pdfs/java_tutorial.pdf,
+  /assets/course_pdfs/java_tutorial_2.pdf,
+  /assets/course_pdfs/dummy-pdf_3.pdf"
 },
 {
   name: "Web Development tutorial",
-  path: "/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf"
+  path: "/assets/course_pdfs/java_tutorial.pdf,
+  /assets/course_pdfs/java_tutorial_2.pdf,
+  /assets/course_pdfs/dummy-pdf_3.pdf"
 },
 {
   name: "C++ Language tutorial",
-  path: "/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf"
+  path: "/assets/course_pdfs/java_tutorial.pdf,
+  /assets/course_pdfs/java_tutorial_2.pdf,
+  /assets/course_pdfs/dummy-pdf_3.pdf"
 },
 {
   name: "Python for begineers tutorial",
-  path: "/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf"
+  path: "/assets/course_pdfs/java_tutorial.pdf,
+  /assets/course_pdfs/java_tutorial_2.pdf,
+  /assets/course_pdfs/dummy-pdf_3.pdf"
 },
 {
   name: "Java Advanced tutorial",
-  path: "/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf"
+  path: "/assets/course_pdfs/java_tutorial.pdf,
+  /assets/course_pdfs/java_tutorial_2.pdf,
+  /assets/course_pdfs/dummy-pdf_3.pdf"
 },
 {
   name: "STL in C++ tutorial",
-  path: "/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf"
+  path: "/assets/course_pdfs/java_tutorial.pdf,
+  /assets/course_pdfs/java_tutorial_2.pdf,
+  /assets/course_pdfs/dummy-pdf_3.pdf"
 },
 {
   name: "C,C++ and DSA tutorial",
-  path: "/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf,/assets/course_pdfs/java_tutorial.pdf"
+  path: "/assets/course_pdfs/java_tutorial.pdf,
+  /assets/course_pdfs/java_tutorial_2.pdf,
+  /assets/course_pdfs/dummy-pdf_3.pdf"
 },]
 @course_ids=Course.pluck(:id)
 

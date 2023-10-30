@@ -16,12 +16,12 @@ Rails.application.routes.draw do
 
   get "form" ,to: "users#form"
   get "/add" ,to: "courses#create"
-
+  get "download_pdf", to: "courses#download_certificate"
   get "/addition",to: "courses#addition"
 
   resources :courses do
     resources :feedbacks, only: [:create]
   end
-  
-  
+
+
 end

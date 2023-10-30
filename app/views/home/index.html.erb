@@ -1,33 +1,52 @@
-<div class="container">
-  <div class="my-5 d-flex flex-column align-items-center justify-content-center">
+<div
+    class="p-5 d-flex flex-column align-items-center justify-content-center  " style="background-image:url('assets/course_images/bg.jpg');background-repeat: no-repeat; background-size: cover;height:70vh;" >
     <h1>Learn programming skills with us</h1>
     <button class="btn btn-primary">view more</button>
-
   </div>
-  <div class="container  d-flex flex-wrap p-3 justify-content-center align-items-center">
+<div class="container-fluid" >
+  
+  <div
+    class="container d-flex flex-wrap p-3 justify-content-center align-items-center">
     <% @courses.each do |course|%>
-      <div class="card m-3 shadow" style="width: 18rem">
-        <img src="<%=course.image%>" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title ">
-            <%=course.name%>
-          </h5>
-          <div class="card-text d-flex justify-content-between">
-            <p>
-              <%=course.description%>
-            </p>
-            <p>Price:<%=course.price%>
-            </p>
-          </div>
-          <%= link_to "View Details" ,course,methods: :get, class: "btn btn-primary" %>
+    <div class="card m-3 shadow" style="width: 18rem">
+      <img src="<%=course.image%>" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title"><%=course.name%></h5>
+        <div class="card-text d-flex justify-content-between">
+          <p><%=course.description%></p>
+          <p>Price:<%=course.price%></p>
         </div>
+        <%= link_to "View Details" ,course,methods: :get, class: "btn
+        btn-primary" %>
       </div>
-      <%end%>
-  </div>
-
-    <h3>Feedback</h3>
-    <% @feedbacks.each do |feedback| %>
-      
-          <%=feedback.description%>
-       
+    </div>
     <%end%>
+  </div>
+ <h3 class="text-center">Feedback</h3>
+
+</div>
+<div class="feedback-section   d-flex flex-wrap mt-3" style="background-color: rgb(176, 218, 255);">
+   
+  <% @feedbacks.each do |feedback| %>
+  <div class="card shadow p-4 m-3" style="width: 23rem">
+    <div class="card-title">
+      <div class="d-flex">
+        <% if feedback.user.avatar.persisted? %> 
+           <%= image_tag feedback.user.avatar, class:"img-fluid" ,width:"40px",style:"border-radius:50%"%> 
+        <%else%> 
+           <%= image_tag "/assets/course_images/img.png", class:"img-fluid",width:"40px",style:"border-radius:50%"%> 
+        <%end %>
+        <h5 class="card-title text-capitalize my-auto mx-2"><%= feedback.user.name%></h5>
+      </div>
+      
+    </div>
+    <div class="card-body">
+      <p class="card-text"><%= feedback.description%></p>
+    </div>
+  </div>
+  <%end%>
+ </div>
+<div class="container-fluid bg-dark text-white text-center p-2">
+  Copyright © 2008 - 2023 Skillify.com
+All Rights Reserved.
+</div>

@@ -1,3 +1,4 @@
+
 class CoursesController < ApplicationController
 
   def index
@@ -13,24 +14,23 @@ class CoursesController < ApplicationController
   def new
     @course = Course.new
   end
-  
+
+  def download_certificate
+    require "prawn"
+    certificate=Prawn::Document.new
+    certificate.text "#{current_user.name}"
+    send_data(certificate.render, filename: "#{current_user.name}.pdf",type:"application/pdf")
+  end
+
   def addition
     @progress = Progress.find_by(id: params[:id])
-
-    if @progress
+    if  @progress.pdf_watched_history.include?(params[:link])==false
+      @progress.pdf_watched_history.push(params[:link])
       @progress.pdf_watched += 1
-      if @progress.save
-        flash[:success] = "PDF watched count updated."
-      else
-        flash[:error] = "Failed to update PDF watched count."
-      end
-    else
-      flash[:error] = "Progress record not found."
+      @progress.percentage_completion=((@progress.pdf_watched*100)/3)
+      @progress.save
     end
-  
-    
  end
-
 
   def create
     @user = current_user
@@ -50,7 +50,6 @@ class CoursesController < ApplicationController
       flash.now[:alert]="Please sign in first !!"
       render "/courses/show"
     end
-
   end
 
 

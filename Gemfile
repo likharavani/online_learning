@@ -15,7 +15,9 @@ gem 'byebug'
 gem "sqlite3", "~> 1.4"
 gem "pg"
 gem "yaml_db"
-gem "font-awesome-rails"
+gem "prawn"
+gem 'owlcarousel-rails'
+# gem "font-awesome-rails"
 gem 'jquery-rails'
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
