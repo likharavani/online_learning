@@ -1,12 +1,18 @@
-<div
-    class="p-5 d-flex flex-column align-items-center justify-content-center  " style="background-image:url('assets/course_images/bg.jpg');background-repeat: no-repeat; background-size: cover;height:70vh;" >
-    <h1>Learn programming skills with us</h1>
-    <button class="btn btn-primary">view more</button>
-  </div>
-<div class="container-fluid" >
-  
-  <div
-    class="container d-flex flex-wrap p-3 justify-content-center align-items-center">
+<%# landing %>
+<div class="p-5 d-flex flex-column align-items-center justify-content-center"
+     style="background: linear-gradient(transparent, black),
+            url('assets/course_images/bg1.webp');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 70vh;
+          ">
+  <h1 class="text-white">Learn programming skills with us</h1>
+  <p class="text-white text-center w-50">We’re here to help you improve as fast as possible. With us, you’ll always be studying with the most updated, tried-and-tested videos & study materials. We don't overwhelm you with lot of ineffective materials.</p>
+</div>
+<%# course section %>
+<div class="container-fluid mt-3">
+  <h3 class="text-center my-3">Our Courses</h3>
+  <div class="container d-flex flex-wrap p-3 justify-content-center align-items-center" >
     <% @courses.each do |course|%>
     <div class="card m-3 shadow" style="width: 18rem">
       <img src="<%=course.image%>" class="card-img-top" alt="..." />
@@ -17,36 +23,46 @@
           <p>Price:<%=course.price%></p>
         </div>
         <%= link_to "View Details" ,course,methods: :get, class: "btn
-        btn-primary" %>
+        btn-secondary btn-sm" %>
       </div>
     </div>
     <%end%>
   </div>
- <h3 class="text-center">Feedback</h3>
-
 </div>
-<div class="feedback-section   d-flex flex-wrap mt-3" style="background-color: rgb(176, 218, 255);">
-   
-  <% @feedbacks.each do |feedback| %>
-  <div class="card shadow p-4 m-3" style="width: 23rem">
-    <div class="card-title">
-      <div class="d-flex">
-        <% if feedback.user.avatar.persisted? %> 
-           <%= image_tag feedback.user.avatar, class:"img-fluid" ,width:"40px",style:"border-radius:50%"%> 
+<%# feedback section %>
+
+<div class="feedback-section p-3 mt-3" 
+     style="background: linear-gradient(transparent, black),
+            url('assets/course_images/feedback.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+          
+          ">
+  <h3 class="text-center mb-3">Feedback</h3>
+  <div class="container d-flex flex-wrap">
+    <% @feedbacks.each do |feedback| %>
+    <div class="card shadow p-4 m-3" style="width: 20rem">
+      <div class="card-title">
+        <div class="d-flex">
+          <% if feedback.user.avatar.persisted? %> 
+              <%= image_tag feedback.user.avatar, class:"img-fluid" ,width:"40px",style:"border-radius:50%"%>
         <%else%> 
-           <%= image_tag "/assets/course_images/img.png", class:"img-fluid",width:"40px",style:"border-radius:50%"%> 
+              <%= image_tag "/assets/course_images/img.png", class:"img-fluid",width:"40px",style:"border-radius:50%"%> 
         <%end %>
-        <h5 class="card-title text-capitalize my-auto mx-2"><%= feedback.user.name%></h5>
+        <h5 class="card-title text-capitalize my-auto mx-2">
+            <%= feedback.user.name%>
+        </h5>
+        </div>
       </div>
-      
+      <div class="card-body">
+        <p class="card-text"><%= feedback.description%></p>
+      </div>
     </div>
-    <div class="card-body">
-      <p class="card-text"><%= feedback.description%></p>
-    </div>
+    <%end%>
   </div>
-  <%end%>
- </div>
+</div>
+
+<%# footer section %>
 <div class="container-fluid bg-dark text-white text-center p-2">
-  Copyright © 2008 - 2023 Skillify.com
-All Rights Reserved.
+  Copyright © 2008 - 2023 Skillify.com All Rights Reserved.
 </div>

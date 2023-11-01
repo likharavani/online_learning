@@ -1,14 +1,12 @@
-
 class CoursesController < ApplicationController
 
   def index
     @courses=Course.all
     @progress=Progress.all
   end
+
   def show
-    puts "hi"
     @course=Course.find(params[:id])
-    puts "#{@course.name}-----------------"
   end
 
   def new
@@ -18,7 +16,7 @@ class CoursesController < ApplicationController
   def download_certificate
     require "prawn"
     certificate=Prawn::Document.new
-    certificate.text "#{current_user.name}"
+    certificate.text "Name:#{current_user.name}"
     send_data(certificate.render, filename: "#{current_user.name}.pdf",type:"application/pdf")
   end
 
@@ -39,6 +37,7 @@ class CoursesController < ApplicationController
         @course=Course.find(params[:course_id])
         if @user.courses.find_by(name:@course.name)==nil
           @user.courses<<@course
+          UserMailer.course_creation(@user,@course).deliver_now
           Progress.create(course_id:@course.id,user_id:@user.id)
           flash[:notice]="You successfully enroll this course !!"
           redirect_to "/users"
@@ -51,6 +50,4 @@ class CoursesController < ApplicationController
       render "/courses/show"
     end
   end
-
-
 end

@@ -4,9 +4,12 @@
     <div class="card-header">
       <h3 class="card-title text-center">Log In</h3>
     </div>
+  
     <div class="card-body">
       <%= form_for(resource, as: resource_name, url:
       session_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      
       <div class="form-group">
         <%= f.label :email ,class: "mb-2"%><br />
         <%= f.email_field :email, autofocus: true, autocomplete:

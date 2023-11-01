@@ -4,4 +4,6 @@ class Course < ApplicationRecord
     has_many :progress,dependent: :destroy
     has_many :feedbacks,dependent: :destroy
 
+    validates :name,uniqueness: true
+    validates :price, :description, :image,presence: true
 end

@@ -45,16 +45,24 @@
   <h5 class="mx-3">Your courses are :</h5>
  <div class="d-flex flex-wrap">
   <% current_user.courses.each do |course| %>
-  <div class="card shadow m-3 p-3" style="width: 15rem; background-color: rgb(202, 230, 255);">
+  <div class="card shadow m-3 p-3" style="width: 15rem; background-color:rgb(224, 253, 255);">
     <p>
       <%=course.name%>
     </p>
     <a
-        href="courses/<%= course.id %>
-        style="text-decoration: none"
-        class="text-decoration-none"
-        >View Course</a
-      >
+        href="courses/<%= course.id %>"
+        style="text-decoration: none" class="text-decoration-none text-dark">View Course</a>
+        
+      <%@val=course.progress.first.percentage_completion %> 
+      <% if course.progress.first.percentage_completion==100%>
+         <p><i class="fa-solid fa-circle-check mx-1 text-primary"></i>completed</p>
+      <%else%>
+       <p><i class="fa-solid fa-spinner mx-1 "></i>continue learning</p>
+       <%end%>
+      <div class="progress">
+        <div class="progress-bar bg-primary" role="progressbar" style="width: <%=@val.to_i%>%" aria-valuenow="<%=@val.to_i%>" aria-valuemin="0" aria-valuemax="100"><%=@val.to_i%>%</div>
+     </div>
+     
   </div>
   <%end%>
  </div>

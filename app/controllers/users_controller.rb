@@ -4,10 +4,9 @@ class UsersController < ApplicationController
   def index
     @courses=Course.all
   end
-  def show
-    puts "hi"
-    @course=Course.find(params[:id])
 
+  def show
+    @course=Course.find(params[:id])
   end
 
 end
