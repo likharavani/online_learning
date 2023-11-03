@@ -2,11 +2,12 @@ class CoursesController < ApplicationController
 
   def index
     @courses=Course.all
-    @progress=Progress.all
+    # render json: @courses
   end
 
   def show
-    @course=Course.find(params[:id])
+    @course=Course.find_by(id: params[:id])
+    # render json: @course
   end
 
   def new
@@ -20,8 +21,8 @@ class CoursesController < ApplicationController
     send_data(certificate.render, filename: "#{current_user.name}.pdf",type:"application/pdf")
   end
 
-  def addition
-    @progress = Progress.find_by(id: params[:id])
+  def update_user_progress
+    @progress = Progress.find(params[:id])
     if  @progress.pdf_watched_history.include?(params[:link])==false
       @progress.pdf_watched_history.push(params[:link])
       @progress.pdf_watched += 1
@@ -30,7 +31,7 @@ class CoursesController < ApplicationController
     end
  end
 
-  def create
+  def add_course_to_user
     @user = current_user
     @course=Course.find(params[:course_id])
     if @user

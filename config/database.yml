@@ -14,7 +14,7 @@ development:
 
 test:
   <<: *default
-  database: online_learning
+  database: test_online_learning
 
 production:
   <<: *default

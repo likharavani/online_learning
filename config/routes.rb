@@ -14,10 +14,10 @@ Rails.application.routes.draw do
   resources :users,:courses
 
 
-  get "form" ,to: "users#form"
-  get "/add" ,to: "courses#create"
-  get "download_pdf", to: "courses#download_certificate"
-  get "/addition",to: "courses#addition"
+
+  get "/course/add" ,to: "courses#add_course_to_user"
+  get "download_certificate", to: "courses#download_certificate"
+  get "/update_user_progress",to: "courses#update_user_progress"
 
   resources :courses do
     resources :feedbacks, only: [:create]

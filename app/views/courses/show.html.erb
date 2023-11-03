@@ -5,7 +5,7 @@
   function myFunction(array) {
     $.ajax({
       type: "GET",
-      url: "/addition?id=" + array[0] + "&link=" + array[1],
+      url: "/update_user_progress?id=" + array[0] + "&link=" + array[1],
       success: function () {
         alert("you watched the pdf ");
         document.getElementById("color_change").style.color = "green";
@@ -87,12 +87,12 @@
         <%end%> 
         <% if @progress.pdf_watched==3 %>
                 <h4 >Generate certificate</h4>
-                <%= link_to "download now", download_pdf_path(@course.name) %>
+                <%= link_to "download now", download_certificate_path(@course.name) %>
         <%end%>
       </div>
   <% else %>
       <h4>Price: <%= @course.price %></h4>
       <p>You are not authorized to access this course</p>
-      <%= link_to "Buy now" , "/add?course_id=#{@course.id}" , class: "btn btn-primary my-1" %>
+      <%= link_to "Buy now" , "/course/add?course_id=#{@course.id}" , class: "btn btn-primary my-1" %>
   <% end %>
 </div>
