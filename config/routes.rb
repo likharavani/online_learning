@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   resources  :home
   resources :users,:courses
 
-
-
   get "/course/add" ,to: "courses#add_course_to_user"
   get "download_certificate", to: "courses#download_certificate"
   get "/update_user_progress",to: "courses#update_user_progress"
@@ -23,5 +21,15 @@ Rails.application.routes.draw do
     resources :feedbacks, only: [:create]
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :courses do
+        resources :feedbacks, only: [:create]
+      end
+      resources  :users, :courses, :feedbacks,:pdfs,:home
+      post "/login", to: "users#login"
+      get "/logout", to: "users#logout"
+    end
+  end
 
 end

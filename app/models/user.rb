@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+
+
   has_and_belongs_to_many :courses, dependent: :destroy
   has_many :progress ,dependent: :destroy
   has_many :feedbacks

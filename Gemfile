@@ -3,11 +3,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.2"
 gem 'devise'
+gem 'jwt'
+gem 'bcrypt'
 # gem 'cssbundling-rails'
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+# Bundle edge Rails instead: 
+
 gem "rails", "~> 7.0.8"
 gem 'font-awesome-sass'
-gem 'rails-controller-testing'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 gem 'byebug'
@@ -64,6 +67,7 @@ group :development, :test do
   gem "letter_opener"
   gem "rspec-rails"
   gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
 end
 
 group :development do

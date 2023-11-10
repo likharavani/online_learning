@@ -54,8 +54,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_30_093434) do
   create_table "courses_users", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "course_id", null: false
-    t.float "progress", default: 0.0
-    t.integer "pdf_watched", default: 0
   end
 
   create_table "feedbacks", force: :cascade do |t|

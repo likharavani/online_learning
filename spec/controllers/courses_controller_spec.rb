@@ -8,6 +8,7 @@ RSpec.describe CoursesController, type: :controller do
   describe "CoursesController#index" do
     context "Courses are show" do
       it "renders the index template" do
+        sign_in(user)
         get :index
         expect(response).to render_template("index")
       end
