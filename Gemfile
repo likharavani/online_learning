@@ -10,7 +10,7 @@ gem 'bcrypt'
 
 gem "rails", "~> 7.0.8"
 gem 'font-awesome-sass'
-
+gem 'ransack'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 gem 'byebug'

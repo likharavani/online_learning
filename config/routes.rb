@@ -26,9 +26,12 @@ Rails.application.routes.draw do
       resources :courses do
         resources :feedbacks, only: [:create]
       end
-      resources  :users, :courses, :feedbacks,:pdfs,:home
+      resources  :users, :courses, :feedbacks, :pdfs, :home
       post "/login", to: "users#login"
       get "/logout", to: "users#logout"
+      get "/course/add" ,to: "courses#add_course_to_user"
+      get "download_certificate", to: "courses#download_certificate"
+      get "/update_user_progress",to: "courses#update_user_progress"
     end
   end
 

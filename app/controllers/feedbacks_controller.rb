@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 # app/controllers/feedbacks_controller.rb
 class FeedbacksController < ApplicationController
-
   def new
-    @feedback=Feedback.new
+    @feedback = Feedback.new
   end
 
   def create
@@ -10,9 +11,9 @@ class FeedbacksController < ApplicationController
     @feedback = @course.feedbacks.build(feedback_params)
     @feedback.user = current_user
     if @feedback.save
-      redirect_to @course, notice: "Feedback submitted successfully."
+      redirect_to @course, notice: 'Feedback submitted successfully.'
     else
-      render "courses/show"
+      render 'courses/show'
     end
   end
 

@@ -12,8 +12,15 @@
   </div>
 </div>
 <%# course section %>
+
 <div class="container-fluid mt-3">
   <h3 class="text-center my-3">Our Courses</h3>
+  <div class="mx-auto text-center my-3">
+    <%= search_form_for @q, url: "/home", method: :get do |f| %>
+    <%= f.search_field :name_cont, placeholder: "Search course" %>
+    <%= f.submit class: 'btn btn-primary btn-sm '%>
+    <% end %>
+</div>
   <div class="container d-flex flex-wrap p-3 justify-content-center align-items-center" >
     <% @courses.each do |course|%>
     <div class="card m-3 shadow" style="width: 18rem">
