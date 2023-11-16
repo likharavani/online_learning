@@ -7,7 +7,7 @@ gem 'jwt'
 gem 'bcrypt'
 # gem 'cssbundling-rails'
 # Bundle edge Rails instead: 
-
+gem 'activeadmin'
 gem "rails", "~> 7.0.8"
 gem 'font-awesome-sass'
 gem 'ransack'

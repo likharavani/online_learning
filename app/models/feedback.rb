@@ -4,4 +4,7 @@ class Feedback < ApplicationRecord
 
   validates :course_id,:user_id, presence:  true
   validates :description,presence: true, length: {in: 10..100}
+  def self.ransackable_attributes(auth_object = nil)
+    ["course_id", "created_at", "id", "pdf_watched", "pdf_watched_history", "percentage_completion", "updated_at", "user_id"]
+  end
 end
