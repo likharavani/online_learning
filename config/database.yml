@@ -4,8 +4,18 @@ default: &default
   encoding: unicode
  
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+<<<<<<< HEAD
   
 production:
+=======
+  timeout: 5000
+  username: postgres
+  password: postgres
+  port: 5432
+  host: localhost
+
+development:
+>>>>>>> a736e322d1ae4546639033f9ba22afd977aaef7f
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
   database: online_learning
