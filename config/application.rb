@@ -12,7 +12,7 @@ module Project
     config.load_defaults 7.0
     config.assets.enabled = true
     config.assets.precompile += %w( main.css )
-
+    config.autoload_paths += %W(#{config.root}/app/controllers)
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
