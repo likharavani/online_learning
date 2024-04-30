@@ -1,18 +1,18 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: be_assessment
+  database: online_learning
   pool: 5
-  username: developer
-  password: developer
+  username: postgres
+  password: postgres
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: be_assessment_test
+  database: online_learning_test
   pool: 5
-  username: developer
-  password: developer
+  username: postgres
+  password: postgres
 
 production:
   adapter: postgresql
