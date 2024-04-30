@@ -1,4 +1,6 @@
-class HomeController < ApplicationController
+
+class Api::V1::HomeController < ApiController
+
    layout "welcome"
 
   def index

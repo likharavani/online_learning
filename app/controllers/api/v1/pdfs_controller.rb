@@ -1,4 +1,5 @@
-class PdfsController < ApplicationController
+
+class Api::V1::PdfsController < ApiController
 
   def index
     pdf=Pdf.all
