@@ -1,33 +1,20 @@
-
-default: &default
+development:
   adapter: postgresql
   encoding: unicode
- 
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  
-production:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
-  database: online_learning
+  database: be_assessment
+  pool: 5
   username: developer
   password: developer
-# default: &default
-#   adapter: postgresql
-#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#   timeout: 5000
-#   username: postgres
-#   password: postgres
-#   port: 5432
-#   host: localhost
 
-# development:
-#   <<: *default
-#   database: online_learning
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: be_assessment_test
+  pool: 5
+  username: developer
+  password: developer
 
-# test:
-#   <<: *default
-#   database: test_online_learning
-
-# production:
-#   <<: *default
-#   database: online_learning
+production:
+  adapter: postgresql
+  encoding: unicode
+  url: <%= ENV["DB_URL"] %>
